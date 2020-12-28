@@ -401,7 +401,10 @@ App.prototype.onMouseClick = function (event) {
 
   this.lightHelper.update();
 
-  this.lightHelper.direction;
+  this.causticsInfo.pCaustics.updateUniform(
+    "u_LightDir",
+    this.lightHelper.direction
+  );
 
   for (var i = 0; i < 2; i++) {
     this.waterMaterials[i].uniforms[
