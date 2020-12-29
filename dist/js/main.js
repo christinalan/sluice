@@ -19,9 +19,9 @@ var useGui = true;
 var showLightHelper = false;
 
 var lightDirPresets = [
-  [0.85, 0.15],
-  [1.34, -0.14],
   [1.81, -0.41],
+  [1.34, -0.14],
+  [0.85, 0.15],
 ];
 
 var logDir = false; // log light direction vector
@@ -90,7 +90,7 @@ var App = function () {
   });
 
   if (this.lightHelper.obj) {
-    this.lightHelper.obj.position.y = 50;
+    this.lightHelper.obj.position.y = 100;
   }
 
   // real scene
@@ -101,14 +101,14 @@ var App = function () {
   // camera
 
   this.camera = new THREE.PerspectiveCamera(
-    45,
+    40,
     canvasWidth / canvasHeight,
     1,
     100000
   );
 
-  this.camera.position.z = 100;
-  this.camera.position.y = -35;
+  this.camera.position.z = 40;
+  this.camera.position.y = -50;
   this.camera.position.x = 0;
 
   // controls
@@ -120,7 +120,7 @@ var App = function () {
 
   this.controls.enableDamping = true;
   this.controls.dampingFactor = 0.25;
-  this.controls.enableZoom = false;
+  this.controls.enableZoom = true;
   this.controls.enableRotate = true;
 
   // skyTexture
@@ -130,12 +130,12 @@ var App = function () {
   var path = "./img/skybox/";
   var format = ".jpg";
   var urls = [
-    path + "posx" + format,
-    path + "negx" + format,
-    path + "posy" + format,
+    path + "negx12" + format,
+    path + "negx2" + format,
+    path + "negx13" + format,
     path + "negy" + format,
     path + "posz" + format,
-    path + "negz" + format,
+    path + "negz1" + format,
   ];
 
   var skyTexture = new THREE.CubeTextureLoader().load(urls);
@@ -393,28 +393,6 @@ App.prototype.onMouseClick = function (event) {
   for (var i = 0; i < 2; i++) {
     this.addDrop(center, 0.1, i & 1 ? -0.2 : 0.2);
   }
-
-  this.lightHelper = new LightHelper({
-    logDir: logDir,
-    presets: lightDirPresets,
-  });
-
-  this.lightHelper.update();
-
-  this.causticsInfo.pCaustics.updateUniform(
-    "u_LightDir",
-    this.lightHelper.direction
-  );
-
-  for (var i = 0; i < 2; i++) {
-    this.waterMaterials[i].uniforms[
-      "u_LightDir"
-    ].value = this.lightHelper.direction;
-  }
-
-  this.cubeMaterial.uniforms["u_LightDir"].value = this.lightHelper.direction;
-
-  this.renderer.render(this.lightHelper.scene, this.camera);
 
   if (showRaycastHelper) {
     this.raycastHelper.position.copy(point);
