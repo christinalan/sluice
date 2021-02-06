@@ -2,6 +2,7 @@
  * sydneyzh 2016
  */
 
+
 var canvasWidth = innerWidth;
 var canvasHeight = innerHeight;
 
@@ -26,7 +27,7 @@ var lightDirPresets = [
 
 var logDir = false; // log light direction vector
 
-var showStats = false;
+var showStats = true;
 
 var showRaycastHelper = false;
 
@@ -167,6 +168,7 @@ var App = function () {
     this.waterMaterials[i].side = i ? THREE.BackSide : THREE.FrontSide;
   }
 
+
   var waterPlane = new THREE.PlaneGeometry(waterWidth, waterHeight, 1, 1);
 
   this.waterMeshes = [];
@@ -232,7 +234,7 @@ var App = function () {
 
   // init drops
 
-  this.addRandomDrops();
+  //this.addRandomDrops();
 };
 
 App.prototype.addDrop = function (center, radius, strength) {
@@ -261,6 +263,11 @@ function getRandomArbitrary(min, max) {
 App.prototype.toggleLightHelper = function () {
   showLightHelper = !showLightHelper;
 };
+
+let rotate = true;
+let rotateX = 1;
+let rotateY = 0.001;
+let rotateZ = 0.1;
 
 App.prototype.startAnim = function () {
   this.render.call(this);
@@ -391,7 +398,7 @@ App.prototype.onMouseClick = function (event) {
   ); // uv
 
   for (var i = 0; i < 2; i++) {
-    this.addDrop(center, 0.1, i & 1 ? -0.2 : 0.2);
+    this.addDrop(center, 0.1, i & 1 ? -0.2: 0.2);
   }
 
   if (showRaycastHelper) {

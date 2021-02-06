@@ -51,75 +51,75 @@ THREE.OpenBoxBufferGeometry = function (
   var groupStart = 0;
 
   // build each side of the box geometry
-  buildPlane(
-    "z",
-    "y",
-    "x",
-    -1,
-    -1,
-    depth,
-    height,
-    width,
-    depthSegments,
-    heightSegments,
-    0
-  ); // px
+  // buildPlane(
+  //   "z",
+  //   "y",
+  //   "x",
+  //   -1,
+  //   -1,
+  //   depth,
+  //   height,
+  //   width,
+  //   depthSegments,
+  //   heightSegments,
+  //   0
+  // ); // px
 
-  buildPlane(
-    "z",
-    "y",
-    "x",
-    1,
-    -1,
-    depth,
-    height,
-    -width,
-    depthSegments,
-    heightSegments,
-    1
-  ); // nx
+  // buildPlane(
+  //   "z",
+  //   "y",
+  //   "x",
+  //   1,
+  //   -1,
+  //   depth,
+  //   height,
+  //   -width,
+  //   depthSegments,
+  //   heightSegments,
+  //   1
+  // ); // nx
 
-  buildPlane(
-    "x",
-    "z",
-    "y",
-    1,
-    -1,
-    width,
-    depth,
-    -height,
-    widthSegments,
-    depthSegments,
-    3
-  ); // ny
+  // buildPlane(
+  //   "x",
+  //   "z",
+  //   "y",
+  //   1,
+  //   -1,
+  //   width,
+  //   depth,
+  //   -height,
+  //   widthSegments,
+  //   depthSegments,
+  //   3
+  // ); // ny
 
-  buildPlane(
-    "x",
-    "y",
-    "z",
-    1,
-    -1,
-    width,
-    height,
-    depth,
-    widthSegments,
-    heightSegments,
-    4
-  ); // pz
+  // buildPlane(
+  //   "x",
+  //   "y",
+  //   "z",
+  //   1,
+  //   -1,
+  //   width,
+  //   height,
+  //   depth,
+  //   widthSegments,
+  //   heightSegments,
+  //   4
+  // ); // pz
 
-  buildPlane(
-    "x",
-    "y",
-    "z",
-    -1,
-    -1,
-    width,
-    height,
-    -depth,
-    widthSegments,
-    heightSegments,
-    5
-  ); // nz
+  // buildPlane(
+  //   "x",
+  //   "y",
+  //   "z",
+  //   -1,
+  //   -1,
+  //   width,
+  //   height,
+  //   -depth,
+  //   widthSegments,
+  //   heightSegments,
+  //   5
+  // ); // nz
 
   // build geometry
   this.setIndex(new THREE.BufferAttribute(indices, 1));

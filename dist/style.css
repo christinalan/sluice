@@ -16,4 +16,21 @@ body {
   margin-right: auto;
   margin-top: 0;
   border-style: none;
+  z-index: -2;
+  position:absolute;
+}
+
+#logo {
+  z-index: 2;
+  width:50%;
+  margin-left:-50%;
+  position:absolute;
+
+}
+
+#enterButton {
+  z-index: 3;
+  position:absolute;
+  margin-left:-28%;
+  margin-top: 30%;
 }
